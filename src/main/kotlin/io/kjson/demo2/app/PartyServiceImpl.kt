@@ -27,10 +27,10 @@ class PartyServiceImpl : PartyService {
 
         val log = getLogger()
 
-        private val party1 = Party("1", "Party 1", UUID.randomUUID(), Instant.now())
-        private val party2 = Party("2", "Party 2", UUID.randomUUID(), Instant.now())
-        private val party3 = Party("3", "Party 3", UUID.randomUUID(), Instant.now())
-        private val party4 = Party("4", "Party 4", UUID.randomUUID(), Instant.now())
+        private val party1 = Party("1", "Alpha Mail Co", UUID.randomUUID(), Instant.now())
+        private val party2 = Party("2", "Beater Retreats Ltd", UUID.randomUUID(), Instant.now())
+        private val party3 = Party("3", "Gamma Raze Inc", UUID.randomUUID(), Instant.now())
+        private val party4 = Party("4", "Delta Hairlines Pty Ltd", UUID.randomUUID(), Instant.now())
 
         val parties = listOf(party1, party2, party3, party4)
 
