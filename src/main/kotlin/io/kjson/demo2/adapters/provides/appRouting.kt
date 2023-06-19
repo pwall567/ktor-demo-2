@@ -27,6 +27,13 @@ fun Routing.appRouting(config: Config) {
         call.respond(party)
     }
 
+    get("/party/list/{ids}") {
+        val ids = call.parameters["ids"] ?: throw IllegalArgumentException("No ids")
+        log.info { "GET /party/list/$ids" }
+        val list = config.partyService.getList(ids.split('.'))
+        call.respond(list)
+    }
+
     get("/party/channel/{ids}") {
         val ids = call.parameters["ids"] ?: throw IllegalArgumentException("No ids")
         log.info { "GET /party/channel/$ids" }

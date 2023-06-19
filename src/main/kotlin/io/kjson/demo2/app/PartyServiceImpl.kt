@@ -16,6 +16,13 @@ class PartyServiceImpl : PartyService {
         return parties.find { it.id == id } ?: throw RuntimeException("Not found - $id")
     }
 
+    override suspend fun getList(ids: List<String>): List<Party> {
+        return ids.map { id ->
+            delay(3000)
+            getParty(id)
+        }
+    }
+
     override suspend fun getStream(ids: List<String>, consumer: suspend (Party) -> Unit) {
         for (id in ids) {
             delay(3000)
