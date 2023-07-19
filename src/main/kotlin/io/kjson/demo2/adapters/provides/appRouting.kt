@@ -13,6 +13,7 @@ import io.ktor.server.routing.get
 import io.ktor.server.routing.post
 
 import io.kjson.demo2.ports.requires.Config
+import io.kjson.ktor.respondLines
 import net.pwall.log.getLogger
 
 @OptIn(ExperimentalCoroutinesApi::class)
@@ -68,6 +69,18 @@ fun Routing.appRouting(config: Config) {
             }
         }
         call.respond(outputFlow)
+    }
+
+    get("/party/lines/{ids}") {
+        val ids = call.parameters["ids"] ?: throw IllegalArgumentException("No ids")
+        log.info { "GET /party/lines/$ids" }
+        val flow = flow {
+            config.partyService.getStream(ids.split('.')) {
+                log.info { "Sending ${it.id}" }
+                emit(it)
+            }
+        }
+        call.respondLines(flow)
     }
 
 }
