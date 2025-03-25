@@ -7,7 +7,7 @@ import java.util.UUID
 
 import io.kjson.demo2.ports.provides.PartyService
 import io.kjson.demo2.ports.requires.Party
-import net.pwall.log.getLogger
+import io.kstuff.log.getLogger
 
 class PartyServiceImpl : PartyService {
 
